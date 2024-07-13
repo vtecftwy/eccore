@@ -123,7 +123,8 @@ def safe_path(
     return path
 
 # %% ../nbs-dev/0_00_core.ipynb 37
-# TODO: consider how to modify this with fastcore's `Config`
+# TODO: consider how to modify this with fastcore's Config
+
 def get_config_value(section:str,                        # section in the configparser cfg file
                      key:str,                            # key in the selected section
                      path_to_config_file:Path|str=None   # path to the cfg file
@@ -283,7 +284,9 @@ class ProjectFileSystem(CurrentMachine):
 
     @property
     def project_root(self):
-        #TODO: this code is not correct. It only works when installed in the same folder as the project.
+
+        # TODO: this code is not correct. It only works when installed in the same folder as the project.
+        
         if self.is_local:
             return PACKAGE_ROOT
         elif self.is_colab:
