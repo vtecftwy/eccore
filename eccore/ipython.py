@@ -20,7 +20,7 @@ import warnings
 __all__ = ['run_cli', 'nb_setup', 'install_code_on_cloud', 'display_mds', 'display_dfs', 'pandas_nrows_ncols', 'display_full_df']
 
 # %% ../nbs-dev/0_01_ipython.ipynb 5
-# TODO: replace with fastcore `run`
+# TODO: replace with fastcore run
 
 def run_cli(cmd:str = 'ls -l'   # command to execute in the cli
            ):
@@ -32,6 +32,7 @@ def run_cli(cmd:str = 'ls -l'   # command to execute in the cli
 
 # %% ../nbs-dev/0_01_ipython.ipynb 8
 # TODO: update using the ipython functions of fastcore
+
 def nb_setup(
     autoreload:bool = True,       # True to set autoreload in this notebook
     paths:List[str|Path] = None   # Paths to add to the path environment variable
