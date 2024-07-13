@@ -4,7 +4,7 @@
 from __future__ import annotations
 from collections import OrderedDict
 from itertools import combinations
-from typing import Optional
+from typing import Optional, Union
 
 
 import numpy as np
@@ -76,7 +76,7 @@ def plot_cmap_collections(
 # %% ../nbs-dev/0_02_plotting.ipynb 18
 def plot_color_bar(
     cmap:str,                        # string name of one of the cmaps 
-    series:list[int|float] = None    # series of numerical values to show for each color
+    series: list[Union[int,float]] = None    # series of numerical values to show for each color
 ):
     """Plot a color bar with value overlay from `series` based on `cmap`"""
     if series is None: series = range(10)
@@ -94,7 +94,7 @@ def plot_color_bar(
 
 # %% ../nbs-dev/0_02_plotting.ipynb 23
 def get_color_mapper(
-    series:list[int|float],    # series of values to map to colors  
+    series:list[Union[int,float]],    # series of values to map to colors  
     cmap:str = 'tab10'         # name of the cmap to use
 ):
     """Return color mapper based on a color map and a series of values"""

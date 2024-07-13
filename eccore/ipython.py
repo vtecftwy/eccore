@@ -7,7 +7,7 @@ from functools import wraps
 from IPython.core.getipython import get_ipython
 from IPython.display import display, Markdown, display_markdown
 from pathlib import Path
-from typing import Any, List, Callable, Optional
+from typing import Any, List, Callable, Optional, Union
 from .core import safe_path, path_to_parent_dir, is_type, CurrentMachine
 
 import numpy as np
@@ -30,12 +30,10 @@ def run_cli(cmd:str = 'ls -l'   # command to execute in the cli
     p = subprocess.run(cmd, stdout=subprocess.PIPE, shell=True)
     print(str(p.stdout, 'utf-8'))
 
-# %% ../nbs-dev/0_01_ipython.ipynb 8
-# TODO: update using the ipython functions of fastcore
-
+# %% ../nbs-dev/0_01_ipython.ipynb 9
 def nb_setup(
     autoreload:bool = True,       # True to set autoreload in this notebook
-    paths:List[str|Path] = None   # Paths to add to the path environment variable
+    paths: list[Union[str,Path]] = None   # Paths to add to the path environment variable
     ):
     """Use in first cell of notebook to set autoreload, and add system paths
     
@@ -68,7 +66,7 @@ def nb_setup(
         ipshell.run_line_magic('autoreload', '2')
         print('Set autoreload mode')
 
-# %% ../nbs-dev/0_01_ipython.ipynb 18
+# %% ../nbs-dev/0_01_ipython.ipynb 19
 def install_code_on_cloud(
     package_name:str, # project package name, e.g. metagentools or git+https://github.com/repo.git@main
     quiet:bool=False # install quietly with Trud
@@ -99,7 +97,7 @@ def install_code_on_cloud(
         run_cli(cmd)
         print((f"{package_name} is installed."))
 
-# %% ../nbs-dev/0_01_ipython.ipynb 23
+# %% ../nbs-dev/0_01_ipython.ipynb 24
 def display_mds(
     *strings:str|tuple[str] # any number of strings with text in markdown format
 ):
@@ -107,14 +105,14 @@ def display_mds(
     for string in strings:
         display_markdown(Markdown(data=string))
 
-# %% ../nbs-dev/0_01_ipython.ipynb 27
+# %% ../nbs-dev/0_01_ipython.ipynb 28
 def display_dfs(*dfs:pd.DataFrame       # any number of Pandas DataFrames
                ):
     """Display one or several `pd.DataFrame` in a single cell output"""
     for df in dfs:
         display(df)
 
-# %% ../nbs-dev/0_01_ipython.ipynb 30
+# %% ../nbs-dev/0_01_ipython.ipynb 31
 class pandas_nrows_ncols:
     """Context manager that sets the max number of rows and cols to apply to any output within the context"""
     def __init__(
@@ -136,7 +134,7 @@ class pandas_nrows_ncols:
         pd.options.display.max_rows = self.max_rows
         pd.options.display.max_columns = self.max_cols
 
-# %% ../nbs-dev/0_01_ipython.ipynb 44
+# %% ../nbs-dev/0_01_ipython.ipynb 45
 def display_full_df(
     df:pd.DataFrame|pd.Series,  # `DataFrame` or `Series` to display
 ):
