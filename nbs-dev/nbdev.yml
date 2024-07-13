@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "eccore"
+  site-url: "https://vtecftwy.github.io/eccore"
+  description: "Functions and classes I use often, inspired by fastcore"
+  repo-branch: main
+  repo-url: "https://github.com/vtecftwy/eccore"
