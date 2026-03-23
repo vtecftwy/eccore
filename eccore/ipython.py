@@ -100,6 +100,8 @@ def install_code_on_cloud(
         print((f"{package_name} is installed."))
 
 # %% ../nbs-dev/0_01_ipython.ipynb 24
+# TODO: Migrate display_mds to printmd
+
 def display_mds(
     *strings:str|tuple[str] # any number of strings with text in markdown format
 ):
