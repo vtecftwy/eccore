@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eccore"
+dynamic = ["version"]
+description = "Functions and classes I use often, inspired by fastcore"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "vtecftwy", email = "github@procurasia.com"}]
+keywords = ['nbdev', 'jupyter', 'notebook', 'python']
+classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
+dependencies = ['fastcore', 'matplotlib', 'numpy', 'pandas', 'IPython']
+
+[project.urls]
+Repository = "https://github.com/vtecftwy/eccore"
+Documentation = "https://vtecftwy.github.io/eccore"
+
+[project.entry-points.nbdev]
+eccore = "eccore._modidx:d"
+
+[project.optional-dependencies]
+dev = ['nbdev']
+
+[tool.setuptools.dynamic]
+version = {attr = "eccore.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["eccore"]
+
+[tool.nbdev]
+nbs_path = 'nbs-dev'
+jupyter_hooks = true
